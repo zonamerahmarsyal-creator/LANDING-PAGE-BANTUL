@@ -8,157 +8,204 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
+:root{
+--bg:#0f172a;
+--primary:#00e5ff;
+--text:#e5e7eb;
+}
+
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 
 body{
-background:#000;
-color:#fff;
-overflow-x:hidden;
+background:linear-gradient(-45deg,#0f172a,#0b1120,#111827,#0f172a);
+background-size:400% 400%;
+animation:bgMove 18s ease infinite;
+color:var(--text);
+scroll-behavior:smooth;
 }
 
-/* HERO */
-.hero{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-background:#000;
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
-/* VIDEO FIX (FULL TANPA CROP) */
-.hero video{
-width:100%;
-max-height:100vh;
-object-fit:contain;
-background:#000;
-}
+section{padding:100px 20px;text-align:center;}
+.container{max-width:1150px;margin:auto;}
 
-/* CONTENT */
-.hero-content{
-position:absolute;
-text-align:center;
-}
-.hero h1{font-size:3rem;font-weight:800;}
-.hero p{opacity:.8;margin-top:10px;}
-
-.btn{
-margin-top:20px;
-padding:12px 30px;
-background:#fff;
-color:#000;
-border-radius:40px;
-text-decoration:none;
-font-weight:600;
-}
-
-/* SECTION */
-section{padding:80px 20px;text-align:center;}
-.container{max-width:1100px;margin:auto;}
-
-/* GLASS */
 .glass{
 background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
 border-radius:20px;
-padding:40px;
+padding:60px 25px;
+}
+
+/* VIDEO (TIDAK RUSAK) */
+.hero video{
+width:100%;
+max-height:400px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 0 40px rgba(0,229,255,0.2);
 }
 
 /* COUNTDOWN */
 .countdown{
 display:flex;
-gap:15px;
 justify-content:center;
+gap:20px;
 flex-wrap:wrap;
+margin-top:30px;
 }
 .time{
-background:rgba(255,255,255,0.1);
-padding:15px;
-border-radius:10px;
+background:rgba(0,229,255,0.08);
+padding:20px;
+border-radius:12px;
+min-width:90px;
 }
+.time h3{
+color:var(--primary);
+}
+
+/* TABLE */
+table{
+width:100%;
+max-width:600px;
+margin:auto;
+border-collapse:collapse;
+}
+th,td{
+padding:15px;
+}
+th{background:var(--primary);color:#000;}
+td{background:rgba(255,255,255,0.06);}
 
 /* CARD */
 .cards{
 display:flex;
-gap:20px;
+gap:25px;
 justify-content:center;
 flex-wrap:wrap;
 }
 .card{
-padding:40px;
-width:200px;
-background:linear-gradient(135deg,#00e5ff,#8b5cf6);
+padding:45px;
+width:220px;
 border-radius:20px;
+font-weight:600;
 cursor:pointer;
+transition:.3s;
+color:#fff;
 }
+.card:hover{
+transform:translateY(-8px) scale(1.05);
+}
+.c5k{background:linear-gradient(135deg,#00e5ff,#0ea5e9);}
+.c10k{background:linear-gradient(135deg,#ec4899,#8b5cf6);}
 
-/* PARALLAX */
+/* PARALLAX POSTER */
 .parallax{
-background:url('poster.jpg') center/cover;
-height:300px;
+background:
+linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url('poster.jpg') center/cover no-repeat;
+min-height:450px;
+border-radius:20px;
+margin:40px auto;
+max-width:1100px;
 }
 
 /* GALLERY */
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:15px;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
 }
-.gallery img{width:100%;border-radius:10px;}
+.gallery img{
+width:100%;
+border-radius:15px;
+transition:.3s;
+}
+.gallery img:hover{
+transform:scale(1.05);
+}
 
 /* FAQ */
-.faq-item{margin:10px 0;}
-.faq-answer{display:none;}
-.faq-item.active .faq-answer{display:block;}
+.faq-item{
+margin-bottom:10px;
+background:rgba(255,255,255,0.05);
+border-radius:10px;
+overflow:hidden;
+}
+.faq-question{
+padding:15px;
+cursor:pointer;
+font-weight:600;
+}
+.faq-answer{
+display:none;
+padding:15px;
+}
+.faq-item.active .faq-answer{
+display:block;
+}
 
 /* SPONSOR */
 .sponsor{
 display:flex;
-gap:20px;
+gap:40px;
 justify-content:center;
 flex-wrap:wrap;
+margin-top:30px;
 }
-.sponsor img{height:40px;}
+.sponsor img{
+height:80px;
+max-width:150px;
+object-fit:contain;
+opacity:.8;
+}
 
 /* WA */
-.wa{
+.wa-float{
 position:fixed;
-bottom:20px;
-right:20px;
+bottom:25px;
+right:25px;
 background:#25D366;
-padding:12px;
-border-radius:50px;
 color:#fff;
+padding:15px 20px;
+border-radius:50px;
 text-decoration:none;
+font-weight:600;
+}
+
+/* FOOTER */
+footer{
+padding:50px;
+text-align:center;
+opacity:.7;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
-
+<!-- VIDEO HERO -->
+<section>
+<div class="container">
+<h2>BFR 2026</h2>
 <video autoplay muted loop>
 <source src="hero.mp4" type="video/mp4">
 </video>
-
-<div class="hero-content">
-<h1>BFR 2026</h1>
-<p>Ultimate Running Experience</p>
-<a href="#kategori" class="btn">Daftar</a>
 </div>
-
 </section>
 
 <!-- COUNTDOWN -->
 <section>
 <div class="container glass">
-<h2>Countdown</h2>
+<h2>Menuju Event</h2>
 <div class="countdown">
-<div class="time"><h3 id="d">00</h3>Hari</div>
-<div class="time"><h3 id="h">00</h3>Jam</div>
-<div class="time"><h3 id="m">00</h3>Menit</div>
-<div class="time"><h3 id="s">00</h3>Detik</div>
+<div class="time"><h3 id="days">00</h3>Hari</div>
+<div class="time"><h3 id="hours">00</h3>Jam</div>
+<div class="time"><h3 id="minutes">00</h3>Menit</div>
+<div class="time"><h3 id="seconds">00</h3>Detik</div>
 </div>
 </div>
 </section>
@@ -166,17 +213,32 @@ text-decoration:none;
 <!-- PARALLAX -->
 <div class="parallax"></div>
 
+<!-- PRICELIST -->
+<section>
+<div class="container glass">
+<h2>Price List</h2>
+<table>
+<tr><th>Kategori</th><th>Harga</th></tr>
+<tr><td>5K</td><td>Rp 200.000</td></tr>
+<tr><td>10K</td><td>Rp 350.000</td></tr>
+</table>
+</div>
+</section>
+
 <!-- CATEGORY -->
 <section id="kategori">
-<h2>Kategori</h2>
+<div class="container">
+<h2>Pilih Kategori</h2>
 <div class="cards">
-<div class="card" onclick="go()">5K RUN</div>
-<div class="card" onclick="go()">10K RUN</div>
+<div class="card c5k" onclick="go()">5K FUN RUN</div>
+<div class="card c10k" onclick="go()">10K COMPETITION</div>
+</div>
 </div>
 </section>
 
 <!-- GALLERY -->
 <section>
+<div class="container glass">
 <h2>Galeri</h2>
 <div class="gallery">
 <img src="galeri1.jpg">
@@ -184,43 +246,64 @@ text-decoration:none;
 <img src="galeri3.jpg">
 <img src="galeri4.jpg">
 </div>
+</div>
 </section>
 
 <!-- FAQ -->
 <section>
+<div class="container glass">
 <h2>FAQ</h2>
+
 <div class="faq-item">
-<div onclick="this.parentElement.classList.toggle('active')">Cara daftar?</div>
-<div class="faq-answer">Klik kategori lalu chat admin</div>
+<div class="faq-question">Bagaimana cara daftar?</div>
+<div class="faq-answer">Klik kategori lalu chat admin via WhatsApp.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">Minimal usia?</div>
+<div class="faq-answer">12 tahun.</div>
+</div>
+
 </div>
 </section>
 
 <!-- SPONSOR -->
 <section>
-<h2>Sponsor</h2>
+<h2>Official Sponsor</h2>
 <div class="sponsor">
 <img src="sponsor1.png">
 <img src="sponsor2.png">
 <img src="sponsor3.png">
+<img src="sponsor4.png">
 </div>
 </section>
 
-<footer style="padding:30px;text-align:center;">
-© 2026 BFR
+<footer>
+© 2026 BFR Bantul Fun Run
 </footer>
 
-<a href="https://wa.me/628217003017" class="wa">Chat</a>
+<a href="https://wa.me/628217003017" class="wa-float">Chat Admin</a>
 
 <script>
-// COUNTDOWN
-let t=new Date("2026-07-05T05:30:00+07:00").getTime();
+// COUNTDOWN FIX
+const eventDate = new Date("2026-07-05T05:30:00+07:00").getTime();
+
 setInterval(()=>{
-let n=Date.now(),d=t-n;
-dEl.innerHTML=Math.floor(d/86400000);
-h.innerHTML=Math.floor((d%86400000)/3600000);
-m.innerHTML=Math.floor((d%3600000)/60000);
-s.innerHTML=Math.floor((d%60000)/1000);
+const now = new Date().getTime();
+const d = eventDate - now;
+
+document.getElementById("days").innerHTML = Math.floor(d / (1000*60*60*24));
+document.getElementById("hours").innerHTML = Math.floor((d % (1000*60*60*24)) / (1000*60*60));
+document.getElementById("minutes").innerHTML = Math.floor((d % (1000*60*60)) / (1000*60));
+document.getElementById("seconds").innerHTML = Math.floor((d % (1000*60)) / 1000);
 },1000);
+
+// FAQ
+document.querySelectorAll(".faq-question").forEach(q=>{
+q.addEventListener("click",()=>{
+q.parentElement.classList.toggle("active");
+});
+});
 
 // REDIRECT
 function go(){
