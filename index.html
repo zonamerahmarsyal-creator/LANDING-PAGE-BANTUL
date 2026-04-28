@@ -40,7 +40,7 @@ border-radius:20px;
 padding:60px 25px;
 }
 
-/* ✅ VIDEO FIX RESPONSIVE */
+/* VIDEO */
 .video-wrapper{
 width:100%;
 max-width:900px;
@@ -58,11 +58,42 @@ object-fit:cover;
 display:block;
 }
 
-/* 📱 KHUSUS HP */
+/* SUPER COMPACT MOBILE */
 @media (max-width:768px){
+section{padding:60px 15px;}
+
 .video-wrapper video{
-aspect-ratio:16/9;
-max-height:220px;
+max-height:140px;
+}
+
+h2{font-size:20px;}
+}
+
+/* 🔥 BUTTON DAFTAR */
+.btn-daftar{
+display:inline-block;
+margin-top:20px;
+padding:14px 28px;
+background:linear-gradient(135deg,#00e5ff,#0ea5e9);
+color:#000;
+font-weight:700;
+border-radius:50px;
+text-decoration:none;
+transition:.3s;
+box-shadow:0 8px 25px rgba(0,229,255,0.3);
+}
+
+.btn-daftar:hover{
+transform:scale(1.08);
+box-shadow:0 10px 35px rgba(0,229,255,0.5);
+}
+
+@media (max-width:768px){
+.btn-daftar{
+width:100%;
+max-width:260px;
+font-size:14px;
+padding:12px;
 }
 }
 
@@ -80,9 +111,7 @@ padding:20px;
 border-radius:12px;
 min-width:90px;
 }
-.time h3{
-color:var(--primary);
-}
+.time h3{color:var(--primary);}
 
 /* TABLE */
 table{
@@ -91,9 +120,7 @@ max-width:600px;
 margin:auto;
 border-collapse:collapse;
 }
-th,td{
-padding:15px;
-}
+th,td{padding:15px;}
 th{background:var(--primary);color:#000;}
 td{background:rgba(255,255,255,0.06);}
 
@@ -113,13 +140,11 @@ cursor:pointer;
 transition:.3s;
 color:#fff;
 }
-.card:hover{
-transform:translateY(-8px) scale(1.05);
-}
+.card:hover{transform:translateY(-8px) scale(1.05);}
 .c5k{background:linear-gradient(135deg,#00e5ff,#0ea5e9);}
 .c10k{background:linear-gradient(135deg,#ec4899,#8b5cf6);}
 
-/* PARALLAX POSTER */
+/* PARALLAX */
 .parallax{
 background:
 linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
@@ -141,9 +166,7 @@ width:100%;
 border-radius:15px;
 transition:.3s;
 }
-.gallery img:hover{
-transform:scale(1.05);
-}
+.gallery img:hover{transform:scale(1.05);}
 
 /* FAQ */
 .faq-item{
@@ -161,9 +184,7 @@ font-weight:600;
 display:none;
 padding:15px;
 }
-.faq-item.active .faq-answer{
-display:block;
-}
+.faq-item.active .faq-answer{display:block;}
 
 /* SPONSOR */
 .sponsor{
@@ -209,6 +230,10 @@ opacity:.7;
 <div class="container">
 <h2>BFR 2026</h2>
 
+<a href="https://zonamerahmarsyal-creator.github.io/BANTUL-RUN-2026/" class="btn-daftar">
+Daftar Sekarang
+</a>
+
 <div class="video-wrapper">
 <video autoplay muted loop playsinline>
 <source src="hero.mp4" type="video/mp4">
@@ -218,7 +243,7 @@ opacity:.7;
 </div>
 </section>
 
-<!-- COUNTDOWN -->
+<!-- SISANYA TETAP -->
 <section>
 <div class="container glass">
 <h2>Menuju Event</h2>
@@ -231,10 +256,8 @@ opacity:.7;
 </div>
 </section>
 
-<!-- PARALLAX -->
 <div class="parallax"></div>
 
-<!-- PRICELIST -->
 <section>
 <div class="container glass">
 <h2>Price List</h2>
@@ -246,7 +269,6 @@ opacity:.7;
 </div>
 </section>
 
-<!-- CATEGORY -->
 <section id="kategori">
 <div class="container">
 <h2>Pilih Kategori</h2>
@@ -257,7 +279,6 @@ opacity:.7;
 </div>
 </section>
 
-<!-- GALLERY -->
 <section>
 <div class="container glass">
 <h2>Galeri</h2>
@@ -270,7 +291,6 @@ opacity:.7;
 </div>
 </section>
 
-<!-- FAQ -->
 <section>
 <div class="container glass">
 <h2>FAQ</h2>
@@ -288,7 +308,6 @@ opacity:.7;
 </div>
 </section>
 
-<!-- SPONSOR -->
 <section>
 <h2>Official Sponsor</h2>
 <div class="sponsor">
