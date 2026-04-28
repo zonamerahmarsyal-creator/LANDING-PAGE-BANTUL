@@ -40,13 +40,30 @@ border-radius:20px;
 padding:60px 25px;
 }
 
-/* VIDEO (TIDAK RUSAK) */
-.hero video{
+/* ✅ VIDEO FIX RESPONSIVE */
+.video-wrapper{
 width:100%;
-max-height:400px;
-object-fit:cover;
+max-width:900px;
+margin:auto;
 border-radius:20px;
+overflow:hidden;
 box-shadow:0 0 40px rgba(0,229,255,0.2);
+}
+
+.video-wrapper video{
+width:100%;
+height:auto;
+aspect-ratio:16/9;
+object-fit:cover;
+display:block;
+}
+
+/* 📱 KHUSUS HP */
+@media (max-width:768px){
+.video-wrapper video{
+aspect-ratio:16/9;
+max-height:220px;
+}
 }
 
 /* COUNTDOWN */
@@ -191,9 +208,13 @@ opacity:.7;
 <section>
 <div class="container">
 <h2>BFR 2026</h2>
-<video autoplay muted loop>
+
+<div class="video-wrapper">
+<video autoplay muted loop playsinline>
 <source src="hero.mp4" type="video/mp4">
 </video>
+</div>
+
 </div>
 </section>
 
@@ -285,7 +306,6 @@ opacity:.7;
 <a href="https://wa.me/628217003017" class="wa-float">Chat Admin</a>
 
 <script>
-// COUNTDOWN FIX
 const eventDate = new Date("2026-07-05T05:30:00+07:00").getTime();
 
 setInterval(()=>{
@@ -298,14 +318,12 @@ document.getElementById("minutes").innerHTML = Math.floor((d % (1000*60*60)) / (
 document.getElementById("seconds").innerHTML = Math.floor((d % (1000*60)) / 1000);
 },1000);
 
-// FAQ
 document.querySelectorAll(".faq-question").forEach(q=>{
 q.addEventListener("click",()=>{
 q.parentElement.classList.toggle("active");
 });
 });
 
-// REDIRECT
 function go(){
 window.location.href="https://zonamerahmarsyal-creator.github.io/BANTUL-RUN-2026/";
 }
