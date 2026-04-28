@@ -3,108 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BFR 2026 - Ultimate Experience</title>
 
-<title>BFR 2026 - Official Event</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 
 <style>
-:root{
---bg:#0b1120;
---primary:#00e5ff;
---text:#e5e7eb;
-}
-
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 
 body{
-background:linear-gradient(180deg,#0b1120,#020617);
-color:var(--text);
+background:#000;
+color:#fff;
 overflow-x:hidden;
 }
 
-/* NAVBAR */
-.navbar{
-position:fixed;
-top:0;
-width:100%;
-background:rgba(0,0,0,.4);
-backdrop-filter:blur(10px);
-padding:15px;
-z-index:999;
-text-align:center;
-font-weight:600;
+/* VIDEO HERO */
+.hero{
+position:relative;
+height:100vh;
+overflow:hidden;
 }
 
-/* HERO */
-.hero{
-height:100vh;
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.4);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+height:100%;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-position:relative;
-}
-
-.hero::before{
-content:"";
-position:absolute;
-width:500px;
-height:500px;
-background:radial-gradient(circle,var(--primary),transparent);
-filter:blur(120px);
-opacity:.4;
 }
 
 .hero h1{
 font-size:4rem;
-font-weight:800;
+font-weight:900;
+letter-spacing:-1px;
 }
 
 .hero p{
+opacity:.8;
 margin-top:10px;
-opacity:.7;
 }
 
 .btn{
 margin-top:30px;
-padding:14px 35px;
-border-radius:40px;
+padding:15px 40px;
 background:#fff;
 color:#000;
+border-radius:50px;
 text-decoration:none;
-font-weight:600;
+font-weight:700;
 transition:.3s;
 }
-.btn:hover{
-transform:scale(1.05);
+.btn:hover{transform:scale(1.1);}
+
+/* SCROLL FADE */
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:1s;
+}
+.reveal.active{
+opacity:1;
+transform:translateY(0);
 }
 
 /* SECTION */
 section{padding:100px 20px;text-align:center;}
 .container{max-width:1100px;margin:auto;}
 
-.glass{
-background:rgba(255,255,255,0.05);
-border-radius:20px;
-padding:50px;
-backdrop-filter:blur(10px);
-}
-
 /* COUNTDOWN */
 .countdown{
 display:flex;
-justify-content:center;
 gap:20px;
+justify-content:center;
 flex-wrap:wrap;
-margin-top:30px;
 }
 .time{
-background:rgba(0,229,255,.1);
+background:rgba(255,255,255,0.1);
 padding:20px;
-border-radius:15px;
-min-width:90px;
+border-radius:10px;
 }
 
 /* CARD */
@@ -115,32 +101,22 @@ justify-content:center;
 flex-wrap:wrap;
 }
 .card{
-width:240px;
 padding:50px;
+width:240px;
+background:linear-gradient(135deg,#00e5ff,#8b5cf6);
 border-radius:20px;
 cursor:pointer;
-background:linear-gradient(135deg,#00e5ff,#0ea5e9);
-color:#000;
-font-weight:700;
 transition:.4s;
 }
 .card:hover{
-transform:translateY(-10px) scale(1.05);
-box-shadow:0 20px 60px rgba(0,0,0,.6);
+transform:scale(1.08);
 }
 
-/* TABLE */
-table{
-width:100%;
-max-width:600px;
-margin:auto;
-border-collapse:collapse;
+/* PARALLAX */
+.parallax{
+background:url('poster.jpg') center/cover fixed;
+height:400px;
 }
-th,td{
-padding:15px;
-}
-th{background:var(--primary);color:#000;}
-td{background:rgba(255,255,255,0.05);}
 
 /* GALLERY */
 .gallery{
@@ -150,35 +126,13 @@ gap:20px;
 }
 .gallery img{
 width:100%;
-border-radius:15px;
-transition:.4s;
-}
-.gallery img:hover{
-transform:scale(1.1);
+border-radius:10px;
 }
 
 /* FAQ */
-.faq-item{
-margin-bottom:10px;
-background:rgba(255,255,255,0.05);
-border-radius:10px;
-overflow:hidden;
-}
-.faq-question{
-padding:15px;
-cursor:pointer;
-font-weight:600;
-}
-.faq-answer{
-max-height:0;
-overflow:hidden;
-transition:.4s;
-padding:0 15px;
-}
-.faq-item.active .faq-answer{
-max-height:100px;
-padding:15px;
-}
+.faq-item{margin:10px 0;}
+.faq-answer{display:none;}
+.faq-item.active .faq-answer{display:block;}
 
 /* SPONSOR */
 .sponsor{
@@ -186,24 +140,8 @@ display:flex;
 gap:40px;
 justify-content:center;
 flex-wrap:wrap;
-opacity:.7;
 }
-.sponsor img{
-height:50px;
-}
-
-/* CTA */
-.cta{
-margin-top:50px;
-}
-.cta a{
-padding:15px 40px;
-border-radius:40px;
-background:linear-gradient(135deg,#00e5ff,#8b5cf6);
-color:#000;
-text-decoration:none;
-font-weight:700;
-}
+.sponsor img{height:50px;opacity:.7;}
 
 /* WA */
 .wa{
@@ -211,79 +149,68 @@ position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-color:#fff;
 padding:15px;
 border-radius:50px;
+color:#fff;
 text-decoration:none;
 }
 
-/* FOOTER */
-footer{
-padding:50px;
-text-align:center;
-opacity:.6;
+/* CURSOR GLOW */
+.cursor{
+position:fixed;
+width:20px;
+height:20px;
+background:#00e5ff;
+border-radius:50%;
+pointer-events:none;
+transform:translate(-50%,-50%);
+mix-blend-mode:difference;
 }
 </style>
 </head>
 
 <body>
 
-<div class="navbar">BFR 2026 • Official Event</div>
+<div class="cursor"></div>
 
-<!-- HERO -->
+<!-- HERO VIDEO -->
 <section class="hero">
+<video autoplay muted loop>
+<source src="hero.mp4" type="video/mp4">
+</video>
+
+<div class="hero-content">
 <h1>BFR 2026</h1>
-<p>Run Beyond Your Limits</p>
-<a href="#kategori" class="btn">Daftar Sekarang</a>
+<p>Ultimate Running Experience</p>
+<a href="#kategori" class="btn">JOIN NOW</a>
+</div>
 </section>
 
 <!-- COUNTDOWN -->
-<section>
-<div class="container glass">
-<h2>Menuju Event</h2>
+<section class="reveal">
+<h2>Countdown</h2>
 <div class="countdown">
-<div class="time"><h3 id="days">00</h3>Hari</div>
-<div class="time"><h3 id="hours">00</h3>Jam</div>
-<div class="time"><h3 id="minutes">00</h3>Menit</div>
-<div class="time"><h3 id="seconds">00</h3>Detik</div>
-</div>
+<div class="time"><h3 id="d">00</h3>Hari</div>
+<div class="time"><h3 id="h">00</h3>Jam</div>
+<div class="time"><h3 id="m">00</h3>Menit</div>
+<div class="time"><h3 id="s">00</h3>Detik</div>
 </div>
 </section>
 
-<!-- PRICELIST -->
-<section>
-<div class="container glass">
-<h2>Price List</h2>
-<table>
-<tr><th>Kategori</th><th>Harga</th></tr>
-<tr><td>5K</td><td>Rp 200.000</td></tr>
-<tr><td>10K</td><td>Rp 350.000</td></tr>
-</table>
-</div>
-</section>
+<!-- PARALLAX -->
+<div class="parallax"></div>
 
 <!-- CATEGORY -->
-<section id="kategori">
-<div class="container">
-<h2>Pilih Kategori</h2>
+<section id="kategori" class="reveal">
+<h2>Kategori</h2>
 <div class="cards">
-<div class="card" onclick="go()">5K FUN RUN</div>
-<div class="card" onclick="go()">10K COMPETITION</div>
-</div>
-</div>
-</section>
-
-<!-- BENEFIT -->
-<section>
-<div class="container glass">
-<h2>Benefit</h2>
-<p>✔ Jersey • ✔ Medali • ✔ Bib • ✔ Refreshment • ✔ Doorprize</p>
+<div class="card" onclick="go()">5K RUN</div>
+<div class="card" onclick="go()">10K RUN</div>
 </div>
 </section>
 
 <!-- GALLERY -->
-<section>
-<div class="container glass">
+<section class="reveal">
 <h2>Galeri</h2>
 <div class="gallery">
 <img src="galeri1.jpg">
@@ -291,66 +218,62 @@ opacity:.6;
 <img src="galeri3.jpg">
 <img src="galeri4.jpg">
 </div>
-</div>
 </section>
 
 <!-- FAQ -->
-<section>
-<div class="container glass">
+<section class="reveal">
 <h2>FAQ</h2>
-
 <div class="faq-item">
-<div class="faq-question">Cara daftar?</div>
-<div class="faq-answer">Klik kategori lalu hubungi admin.</div>
-</div>
-
-<div class="faq-item">
-<div class="faq-question">Minimal usia?</div>
-<div class="faq-answer">12 tahun.</div>
-</div>
-
+<div class="faq-q">Cara daftar?</div>
+<div class="faq-answer">Klik tombol lalu chat admin</div>
 </div>
 </section>
 
 <!-- SPONSOR -->
-<section>
-<h2>Official Sponsor</h2>
+<section class="reveal">
+<h2>Sponsor</h2>
 <div class="sponsor">
 <img src="sponsor1.png">
 <img src="sponsor2.png">
 <img src="sponsor3.png">
+<img src="sponsor4.png">
 </div>
 </section>
-
-<!-- CTA -->
-<section class="cta">
-<h2>Siap Ikut?</h2>
-<a href="#kategori">Daftar Sekarang</a>
-</section>
-
-<footer>
-© 2026 BFR Bantul Fun Run
-</footer>
 
 <a href="https://wa.me/628217003017" class="wa">Chat</a>
 
 <script>
 // COUNTDOWN
-const t=new Date("2026-07-05T05:30:00+07:00").getTime();
+let t=new Date("2026-07-05T05:30:00+07:00").getTime();
 setInterval(()=>{
 let n=Date.now(),d=t-n;
-days.innerHTML=Math.floor(d/86400000);
-hours.innerHTML=Math.floor((d%86400000)/3600000);
-minutes.innerHTML=Math.floor((d%3600000)/60000);
-seconds.innerHTML=Math.floor((d%60000)/1000);
+dEl.innerHTML=Math.floor(d/86400000);
+h.innerHTML=Math.floor((d%86400000)/3600000);
+m.innerHTML=Math.floor((d%3600000)/60000);
+s.innerHTML=Math.floor((d%60000)/1000);
 },1000);
+
+// REVEAL
+window.addEventListener("scroll",()=>{
+document.querySelectorAll(".reveal").forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-100){
+el.classList.add("active");
+}
+});
+});
 
 // FAQ
 document.querySelectorAll(".faq-item").forEach(i=>{
 i.onclick=()=>i.classList.toggle("active");
 });
 
-// REDIRECT (TOMBOL TETAP AKTIF)
+// CURSOR
+document.addEventListener("mousemove",e=>{
+document.querySelector(".cursor").style.left=e.clientX+"px";
+document.querySelector(".cursor").style.top=e.clientY+"px";
+});
+
+// REDIRECT
 function go(){
 window.location.href="https://zonamerahmarsyal-creator.github.io/BANTUL-RUN-2026/";
 }
