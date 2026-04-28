@@ -16,161 +16,119 @@ color:#fff;
 overflow-x:hidden;
 }
 
-/* HERO VIDEO */
+/* HERO */
 .hero{
-position:relative;
 height:100vh;
-overflow:hidden;
-}
-.hero video{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-filter:brightness(0.5);
-}
-.hero-content{
-position:relative;
-z-index:2;
-height:100%;
 display:flex;
-flex-direction:column;
 justify-content:center;
 align-items:center;
+flex-direction:column;
+background:#000;
+}
+
+/* VIDEO FIX (FULL TANPA CROP) */
+.hero video{
+width:100%;
+max-height:100vh;
+object-fit:contain;
+background:#000;
+}
+
+/* CONTENT */
+.hero-content{
+position:absolute;
 text-align:center;
 }
-.hero h1{font-size:4rem;font-weight:800;}
+.hero h1{font-size:3rem;font-weight:800;}
 .hero p{opacity:.8;margin-top:10px;}
+
 .btn{
-margin-top:30px;
-padding:15px 40px;
+margin-top:20px;
+padding:12px 30px;
 background:#fff;
 color:#000;
 border-radius:40px;
 text-decoration:none;
 font-weight:600;
-transition:.3s;
 }
-.btn:hover{transform:scale(1.05);}
 
 /* SECTION */
-section{padding:100px 20px;text-align:center;}
+section{padding:80px 20px;text-align:center;}
 .container{max-width:1100px;margin:auto;}
 
 /* GLASS */
 .glass{
 background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
 border-radius:20px;
-padding:50px;
+padding:40px;
 }
 
 /* COUNTDOWN */
 .countdown{
 display:flex;
-gap:20px;
+gap:15px;
 justify-content:center;
 flex-wrap:wrap;
 }
 .time{
 background:rgba(255,255,255,0.1);
-padding:20px;
+padding:15px;
 border-radius:10px;
 }
 
 /* CARD */
 .cards{
 display:flex;
-gap:30px;
+gap:20px;
 justify-content:center;
 flex-wrap:wrap;
 }
 .card{
-padding:50px;
-width:240px;
+padding:40px;
+width:200px;
 background:linear-gradient(135deg,#00e5ff,#8b5cf6);
 border-radius:20px;
 cursor:pointer;
-transition:.4s;
 }
-.card:hover{transform:scale(1.08);}
 
 /* PARALLAX */
 .parallax{
-background:
-linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
-url('poster.jpg') center/cover fixed;
-height:400px;
+background:url('poster.jpg') center/cover;
+height:300px;
 }
 
 /* GALLERY */
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
 }
-.gallery img{
-width:100%;
-border-radius:10px;
-transition:.4s;
-}
-.gallery img:hover{transform:scale(1.1);}
+.gallery img{width:100%;border-radius:10px;}
 
 /* FAQ */
-.faq-item{
-margin:10px 0;
-background:rgba(255,255,255,0.05);
-border-radius:10px;
-}
-.faq-question{
-padding:15px;
-cursor:pointer;
-font-weight:600;
-}
-.faq-answer{
-max-height:0;
-overflow:hidden;
-transition:.4s;
-padding:0 15px;
-}
-.faq-item.active .faq-answer{
-max-height:100px;
-padding:15px;
-}
+.faq-item{margin:10px 0;}
+.faq-answer{display:none;}
+.faq-item.active .faq-answer{display:block;}
 
 /* SPONSOR */
 .sponsor{
 display:flex;
-gap:40px;
+gap:20px;
 justify-content:center;
 flex-wrap:wrap;
 }
-.sponsor img{
-height:50px;
-opacity:.7;
-}
+.sponsor img{height:40px;}
 
-/* WA BUTTON */
+/* WA */
 .wa{
 position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-padding:15px;
+padding:12px;
 border-radius:50px;
 color:#fff;
 text-decoration:none;
-}
-
-/* REVEAL */
-.reveal{
-opacity:0;
-transform:translateY(60px);
-transition:1s;
-}
-.reveal.active{
-opacity:1;
-transform:translateY(0);
 }
 </style>
 </head>
@@ -179,6 +137,7 @@ transform:translateY(0);
 
 <!-- HERO -->
 <section class="hero">
+
 <video autoplay muted loop>
 <source src="hero.mp4" type="video/mp4">
 </video>
@@ -186,14 +145,15 @@ transform:translateY(0);
 <div class="hero-content">
 <h1>BFR 2026</h1>
 <p>Ultimate Running Experience</p>
-<a href="#kategori" class="btn">Daftar Sekarang</a>
+<a href="#kategori" class="btn">Daftar</a>
 </div>
+
 </section>
 
 <!-- COUNTDOWN -->
-<section class="reveal">
+<section>
 <div class="container glass">
-<h2>Menuju Event</h2>
+<h2>Countdown</h2>
 <div class="countdown">
 <div class="time"><h3 id="d">00</h3>Hari</div>
 <div class="time"><h3 id="h">00</h3>Jam</div>
@@ -207,24 +167,16 @@ transform:translateY(0);
 <div class="parallax"></div>
 
 <!-- CATEGORY -->
-<section id="kategori" class="reveal">
-<h2>Pilih Kategori</h2>
+<section id="kategori">
+<h2>Kategori</h2>
 <div class="cards">
-<div class="card" onclick="go()">5K FUN RUN</div>
-<div class="card" onclick="go()">10K COMPETITION</div>
-</div>
-</section>
-
-<!-- BENEFIT -->
-<section class="reveal">
-<div class="container glass">
-<h2>Benefit</h2>
-<p>✔ Jersey • ✔ Medali • ✔ Bib • ✔ Refreshment • ✔ Doorprize</p>
+<div class="card" onclick="go()">5K RUN</div>
+<div class="card" onclick="go()">10K RUN</div>
 </div>
 </section>
 
 <!-- GALLERY -->
-<section class="reveal">
+<section>
 <h2>Galeri</h2>
 <div class="gallery">
 <img src="galeri1.jpg">
@@ -235,34 +187,26 @@ transform:translateY(0);
 </section>
 
 <!-- FAQ -->
-<section class="reveal">
+<section>
 <h2>FAQ</h2>
-
 <div class="faq-item">
-<div class="faq-question">Bagaimana cara daftar?</div>
-<div class="faq-answer">Klik kategori lalu chat admin.</div>
+<div onclick="this.parentElement.classList.toggle('active')">Cara daftar?</div>
+<div class="faq-answer">Klik kategori lalu chat admin</div>
 </div>
-
-<div class="faq-item">
-<div class="faq-question">Minimal usia?</div>
-<div class="faq-answer">12 tahun.</div>
-</div>
-
 </section>
 
 <!-- SPONSOR -->
-<section class="reveal">
-<h2>Official Sponsor</h2>
+<section>
+<h2>Sponsor</h2>
 <div class="sponsor">
 <img src="sponsor1.png">
 <img src="sponsor2.png">
 <img src="sponsor3.png">
-<img src="sponsor4.png">
 </div>
 </section>
 
-<footer style="padding:50px;text-align:center;opacity:.6;">
-© 2026 BFR Bantul Fun Run
+<footer style="padding:30px;text-align:center;">
+© 2026 BFR
 </footer>
 
 <a href="https://wa.me/628217003017" class="wa">Chat</a>
@@ -271,26 +215,12 @@ transform:translateY(0);
 // COUNTDOWN
 let t=new Date("2026-07-05T05:30:00+07:00").getTime();
 setInterval(()=>{
-let now=Date.now(),d=t-now;
-document.getElementById("d").innerHTML=Math.floor(d/86400000);
-document.getElementById("h").innerHTML=Math.floor((d%86400000)/3600000);
-document.getElementById("m").innerHTML=Math.floor((d%3600000)/60000);
-document.getElementById("s").innerHTML=Math.floor((d%60000)/1000);
+let n=Date.now(),d=t-n;
+dEl.innerHTML=Math.floor(d/86400000);
+h.innerHTML=Math.floor((d%86400000)/3600000);
+m.innerHTML=Math.floor((d%3600000)/60000);
+s.innerHTML=Math.floor((d%60000)/1000);
 },1000);
-
-// REVEAL
-window.addEventListener("scroll",()=>{
-document.querySelectorAll(".reveal").forEach(el=>{
-if(el.getBoundingClientRect().top<window.innerHeight-100){
-el.classList.add("active");
-}
-});
-});
-
-// FAQ
-document.querySelectorAll(".faq-item").forEach(item=>{
-item.onclick=()=>item.classList.toggle("active");
-});
 
 // REDIRECT
 function go(){
